@@ -53,3 +53,16 @@
 .item {
   padding-left: 0;
 }
+
+.button {
+  min-height: 30px;
+  min-width: 100px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid #2a363b;
+  outline: none;
+  margin-top: 15px;
+  font-size: 20px;
+  color: #2a363b;
+  font-weight: 600;
+}

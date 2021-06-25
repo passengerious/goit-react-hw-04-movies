@@ -5,6 +5,8 @@ import {
   Route,
   useRouteMatch,
   Switch,
+  useHistory,
+  useLocation,
 } from 'react-router-dom';
 import { fetchMovieDetails, POSTER_URL } from '../../services/movies-api';
 import Cast from '../Cast';
@@ -17,13 +19,22 @@ export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const { url, path } = useRouteMatch();
   const [film, setFilm] = useState({});
+  const history = useHistory();
+  const location = useLocation();
 
   useEffect(() => {
     fetchMovieDetails(movieId).then(setFilm);
   }, [movieId]);
 
+  const handleGoBack = () => {
+    history.push(location?.state?.from?.location ?? '/');
+  };
+
   return (
     <div>
+      <button onClick={handleGoBack} type="button" className={s.button}>
+        Go back
+      </button>
       <div className={s.wrapper}>
         <img
           className={s.image}
